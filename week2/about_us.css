@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3e9e3e5;
+    color: rgb(50, 50, 50);
+    margin: 250px;
+    width: 1000px;
+}
+
+#about {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px hsl(209, 28%, 33%);
+    text-align: center;
+    color: #070a43e5;
+    font-size: 50px;
+}
+
+p.para{
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(58, 80, 119);
+}
+p.para::first-letter {
+    font-size: 40px;
+    color: darkblue;
+}
+
+p.para1 {
+    color: green;
+    font-size: 30px;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+p.para1::first-letter{
+    font-size: 40px;
+    color: rgb(12, 80, 12);
+}
+
+.highlight {
+    color: hsl(200, 90%, 40%);
+    font-weight: bold;
+    background-color: bisque;
+    padding: 7px;
+    border-radius: 10px;
+}
+p.link{
+    font-size: 30px;
+    color: cadetblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+p.link::first-letter {
+    font-size: 40px;
+    color: darkcyan;
+}
+
+a[target="_blank"] {
+    color: rgb(232, 60, 17);
+    text-decoration: underline;
+}
+a:hover {
+    color: rgb(232, 60, 17);
+    text-decoration: underline;
+}
+/* p::first-letter {
+      font-size: 30px;
+      color: darkblue;
+    } */
+
+    #mov {
+        background-color:rgb(232, 234, 225);
+        padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px hsl(209, 28%, 33%);
+    text-align: left;
+    color: #070a43e5;
+    }
+    ul.movies {
+    list-style-type: square;
+    padding: 10px;
+}
+
+h2 {
+    color: rgb(77, 128, 129);
+}
+h2::first-letter {
+    font-size: 30px;
+      color: rgb(8, 87, 161);
+}
+ul.movies {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: darkslategrey;
+}
+ul.movies li.fav {
+    color: white;
+    background: rgb(9, 70, 105);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 70px;
+}
+
+#city {
+    background-color:rgb(199, 226, 225);
+        padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px hsl(209, 28%, 33%);
+    text-align: left;
+    color: #070a43e5;
+}
+
+ol.cities {
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: darkslategrey;
+}
+
+    ol.cities li:last-child {
+      background-color: rgb(140, 157, 175);
+      font-style: italic;
+      width: 70px;
+    }
