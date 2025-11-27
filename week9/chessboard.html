@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chessboard</title>
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            margin-top: 20px;
+            border: 3px solid black;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Chessboard Generator</h2>
+<button id="createBoardBtn">Create Chessboard</button>
+
+<div id="board"></div>
+
+<script>
+document.getElementById("createBoardBtn").addEventListener("click", function () {
+    let board = document.getElementById("board");
+    board.innerHTML = "";  // Clear old board
+
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+
+            // Alternating colors
+            if ((row + col) % 2 === 0) {
+                cell.style.background = "white";
+            } else {
+                cell.style.background = "black";
+            }
+
+            board.appendChild(cell);
+        }
+    }
+});
+</script>
+
+</body>
+</html>

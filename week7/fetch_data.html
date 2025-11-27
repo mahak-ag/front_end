@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Async JS Demo</title>
+</head>
+<body>
+
+<h2>Simulated Server Response</h2>
+
+<button onclick="getData()">Fetch Data</button>
+
+<p id="output"></p>
+
+<script>
+function fakeFetch() {
+    return new Promise((resolve) => {
+
+        document.getElementById("output").textContent = "Loading...";
+
+        setTimeout(() => {
+            resolve("Server: Data loaded successfully!");
+        }, 2000);  // 2 sec delay
+
+    });
+}
+
+function getData() {
+    fakeFetch().then((result) => {
+        document.getElementById("output").textContent = result;
+    });
+}
+</script>
+
+</body>
+</html>

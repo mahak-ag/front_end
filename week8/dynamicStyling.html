@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic CSS</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<h2 id="title">Welcome to jQuery Styling!</h2>
+
+<button id="styleBtn">Apply Styling</button>
+
+<script>
+$("#styleBtn").click(function() {
+    $("#title").css({
+        "color": "blue",
+        "background-color": "lightyellow",
+        "padding": "10px",
+        "border-radius": "10px",
+        "font-size": "28px"
+    });
+});
+</script>
+
+</body>
+</html>

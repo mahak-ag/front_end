@@ -1,0 +1,21 @@
+<script>
+  let numbers = [10, 20, 5, 7, 30];
+
+  document.write("<h3>Original Array: " + numbers + "</h3>");
+
+  // map → multiply each number by 2
+  let doubled = numbers.map(n => n * 2);
+  document.write("Doubled (map): " + doubled + "<br>");
+
+  // filter → numbers greater than 10
+  let greater = numbers.filter(n => n > 10);
+  document.write("Greater than 10 (filter): " + greater + "<br>");
+
+  // reduce → sum of all numbers
+  let sum = numbers.reduce((total, n) => total + n, 0);
+  document.write("Sum (reduce): " + sum + "<br>");
+
+  // forEach → print each value
+  document.write("Values (forEach): ");
+  numbers.forEach(n => document.write(n + " "));
+</script>
