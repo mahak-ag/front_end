@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+
+    /* Rocket animation */
+    .rocket {
+      width: 120px;
+      animation: fly 5s linear infinite;
+      position: relative;
+    }
+
+    @keyframes fly {
+      0%   { top: 150px; left: 0; }
+      100% { top: -150px; left: 200px; }
+    }
+
+    /* Astronaut floating */
+    .astronaut {
+      width: 450px;
+      height: 300px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Space Animation</h2>
+
+  <img src="inline_image_preview.jpg" class="astronaut">
+  <br><br>
+  <img src="9868cc7cfe4e26bc2ca68be692d6053d.jpg" class="rocket">
+
+</body>
+</html>
