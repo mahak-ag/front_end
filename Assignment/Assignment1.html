@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Image Gallery</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    /* Simple responsive grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 6px;
+      opacity: 0.7;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      opacity: 1;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 25px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Beginner Friendly Image Gallery</h2>
+  <p>Click any image to open in popup.</p>
+
+  <!-- Gallery Section -->
+  <div class="gallery" id="gallery"></div>
+
+  <!-- Modal Section -->
+  <div class="modal" id="modal">
+    <span class="close" id="closeBtn">X</span>
+    <img id="modalImg">
+  </div>
+
+  <script>
+    // Sample images (you can replace them)
+    const images = [
+      "https://picsum.photos/id/101/500/300",
+      "https://picsum.photos/id/102/500/300",
+      "https://picsum.photos/id/103/500/300",
+      "https://picsum.photos/id/104/500/300",
+      "https://picsum.photos/id/106/500/300"
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    // Create gallery items with lazy-loading
+    images.forEach(src => {
+      const img = document.createElement("img");
+      img.dataset.src = src;   // lazy load
+      gallery.appendChild(img);
+    });
+
+    // Lazy loading using Intersection Observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src; // load image
+          observer.unobserve(img);   // stop watching
+        }
+      });
+    });
+
+    document.querySelectorAll(".gallery img").forEach(img => {
+      observer.observe(img);
+    });
+
+    // Modal functionality
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeBtn");
+
+    gallery.addEventListener("click", e => {
+      if (e.target.tagName === "IMG") {
+        modalImg.src = e.target.src;
+        modal.classList.add("show");
+      }
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+
+    // Close modal by clicking outside image
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        modal.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>

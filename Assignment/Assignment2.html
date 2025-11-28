@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tic Tac Toe (Beginner Version)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #eef2ff;
+  }
+
+  h1 { margin-top: 20px; }
+
+  .board {
+    width: 300px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+
+  .cell {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border: 2px solid #4f46e5;
+    font-size: 36px;
+    cursor: pointer;
+  }
+
+  .cell:hover {
+    background: #e0e7ff;
+  }
+
+  #status {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #4338ca;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Tic Tac Toe</h1>
+<p id="status">Player X's turn</p>
+
+<div class="board" id="board"></div>
+
+<button onclick="resetGame()">Reset Game</button>
+
+<script>
+// ========= BASIC VARIABLES =========
+let board = ["", "", "", "", "", "", "", "", ""];
+let currentPlayer = "X";
+let gameRunning = true;
+
+// ========= CREATE BOARD =========
+const boardDiv = document.getElementById("board");
+
+function createBoard() {
+  boardDiv.innerHTML = "";
+  board.forEach((cell, i) => {
+    const btn = document.createElement("button");
+    btn.className = "cell";
+    btn.textContent = cell;
+    btn.onclick = () => makeMove(i);
+    boardDiv.appendChild(btn);
+  });
+}
+
+createBoard();
+
+// ========= HANDLE PLAYER MOVE =========
+function makeMove(index) {
+  if (!gameRunning || board[index] !== "") return;
+
+  board[index] = currentPlayer;
+  createBoard();
+
+  if (checkWinner()) {
+    document.getElementById("status").textContent =
+      "Player " + currentPlayer + " wins!";
+    gameRunning = false;
+    return;
+  }
+
+  if (board.every(cell => cell !== "")) {
+    document.getElementById("status").textContent = "It's a tie!";
+    gameRunning = false;
+    return;
+  }
+
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+  document.getElementById("status").textContent =
+    "Player " + currentPlayer + "'s turn";
+}
+
+// ========= WINNING CHECK =========
+function checkWinner() {
+  const winLines = [
+    [0,1,2], [3,4,5], [6,7,8],   // rows
+    [0,3,6], [1,4,7], [2,5,8],   // columns
+    [0,4,8], [2,4,6]             // diagonals
+  ];
+
+  return winLines.some(line => {
+    const [a, b, c] = line;
+    return board[a] &&
+           board[a] === board[b] &&
+           board[a] === board[c];
+  });
+}
+
+// ========= RESET GAME =========
+function resetGame() {
+  board = ["","","","","","","","",""];
+  currentPlayer = "X";
+  gameRunning = true;
+  document.getElementById("status").textContent = "Player X's turn";
+  createBoard();
+}
+</script>
+
+</body>
+</html>
